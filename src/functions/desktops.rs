@@ -41,6 +41,7 @@ fn install_bspwm() {
         "bspwm",
         "sxhkd",
         "xdo",
+        "xdg-user-dirs",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -62,6 +63,7 @@ fn install_awesome() {
         "dex",
         "rlwrap",
         "vicious",
+        "xdg-user-dirs",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -83,6 +85,7 @@ fn install_herbstluftwm() {
         "dmenu",
         "dzen2",
         "xorg-xsetroot",
+        "xdg-user-dirs",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -105,6 +108,7 @@ fn install_i3() {
         "i3lock",
         "i3status",
         "rxvt-unicode",
+        "xdg-user-dirs",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -128,14 +132,8 @@ fn install_sway() {
         "mako",
         "polkit",
         "swaybg",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
-        "sddm",
+        "xdg-user-dirs",
     ]);
-    enable_dm("sddm");
 }
 
 fn install_lxqt() {
@@ -145,11 +143,6 @@ fn install_lxqt() {
         "breeze-icons",
         "nm-tray",
         "xscreensaver",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "sddm",
     ]);
     enable_dm("sddm");
@@ -160,11 +153,7 @@ fn install_enlightenment() {
         "xorg",
         "enlightenment",
         "terminology",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
+        "xdg-user-dirs",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -183,15 +172,11 @@ fn install_xfce() {
     install(vec![
         "xorg",
         "xfce4",
+        "xdg-user-dirs",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
         "xfce4-goodies",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-jack",
-        "pipewire-alsa",
-        "wireplumber",
         "pavucontrol",
     ]);
     files_eval(
@@ -208,11 +193,6 @@ fn install_mate() {
     install(vec![
         "xorg",
         "mate",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -232,11 +212,6 @@ fn install_cinnamon() {
     install(vec![
         "xorg",
         "cinnamon",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -259,11 +234,6 @@ fn install_budgie() {
         "xorg",
         "budgie-desktop",
         "gnome",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "lightdm",
         "lightdm-gtk-greeter",
         "lightdm-gtk-greeter-settings",
@@ -288,11 +258,6 @@ fn install_kde() {
         "plasma-wayland-session",
         "kde-utilities",
         "kde-system",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "sddm",
     ]);
     enable_dm("sddm");
@@ -303,11 +268,6 @@ fn install_gnome() {
         "xorg",
         "gnome",
         "sushi",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "gdm",
     ]);
     enable_dm("gdm");
@@ -318,11 +278,6 @@ fn install_onyx() {
         "xorg",
         "onyx",
         "sushi",
-        "pipewire",
-        "pipewire-pulse",
-        "pipewire-alsa",
-        "pipewire-jack",
-        "wireplumber",
         "gdm",
     ]);
     enable_dm("gdm");
