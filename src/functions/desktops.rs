@@ -35,7 +35,7 @@ fn install_networkmanager() {
     );
 }
 
-fn install_almost() {
+fn install_nearly() {
     install(vec!["nearly"]);
     exec_eval(
         exec_chroot(
