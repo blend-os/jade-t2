@@ -9,7 +9,6 @@ pub fn install_bootloader_efi(efidir: PathBuf) {
         "grub",
         "efibootmgr",
         "grub-btrfs",
-        "crystal-grub-theme",
     ]);
     let efidir = std::path::Path::new("/mnt").join(efidir);
     let efi_str = efidir.to_str().unwrap();
@@ -38,13 +37,6 @@ pub fn install_bootloader_efi(efidir: PathBuf) {
             ],
         ),
         "install unakite grub as efi without --removable",
-    );
-    files_eval(
-        files::append_file(
-            "/mnt/etc/default/grub",
-            "GRUB_THEME=\"/usr/share/grub/themes/crystal/theme.txt\"",
-        ),
-        "enable crystal grub theme",
     );
     exec_eval(
         exec_chroot(
@@ -135,7 +127,7 @@ pub fn setup_unakite(root: &str, oldroot: &str, efi: bool, efidir: &str, bootdev
             vec![
                 String::from("-i"),
                 String::from("-e"),
-                String::from("s/crystal/unakite/g"),
+                String::from("s/blendos/unakite/g"),
                 String::from("/mnt/etc/os-release"),
             ],
         ),
@@ -147,7 +139,7 @@ pub fn setup_unakite(root: &str, oldroot: &str, efi: bool, efidir: &str, bootdev
             vec![
                 String::from("-i"),
                 String::from("-e"),
-                String::from("s/Crystal/Unakite/g"),
+                String::from("s/blendOS/Unakite/g"),
                 String::from("/mnt/etc/os-release"),
             ],
         ),
@@ -175,6 +167,6 @@ pub fn setup_unakite(root: &str, oldroot: &str, efi: bool, efidir: &str, bootdev
             "grub-mkconfig",
             vec![String::from("-o"), String::from("/boot/grub/grub.cfg")],
         ),
-        "Recreate grub.cfg in crystal",
+        "Recreate grub.cfg in blendOS",
     );
 }

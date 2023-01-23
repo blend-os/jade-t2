@@ -22,7 +22,37 @@ pub fn install_base_packages(kernel: String) {
     };
     install::install(vec![
         // Base Arch
-        "base",
+        "filesystem-blend",
+        "gcc-libs",
+        "glibc",
+        "bash",
+        "zsh",
+        "skel-blend",
+        "zsh-autosuggestions",
+        "zsh-syntax-highlighting",
+        "coreutils",
+        "file",
+        "findutils",
+        "gawk",
+        "grep",
+        "procps-ng",
+        "sed",
+        "tar",
+        "gettext",
+        "pciutils",
+        "psmisc",
+        "shadow",
+        "util-linux",
+        "bzip2",
+        "gzip",
+        "xz",
+        "licenses",
+        "pacman",
+        "archlinux-keyring",
+        "systemd",
+        "systemd-sysvcompat",
+        "iputils",
+        "iproute2",
         kernel_to_install,
         "linux-firmware",
         "systemd-sysvcompat",
@@ -34,14 +64,15 @@ pub fn install_base_packages(kernel: String) {
         "sudo",
         "curl",
         "archlinux-keyring",
-        // Base Crystal
-        "crystal-core",
-        "crystal-branding",
+        "blend-keyring",
+        "lsb-release-blend",
+        // Base blendOS
+        "plymouth",
+        "blend",
         // Extra goodies
         "neofetch",
         "btrfs-progs",
         "which",
-        "pkg-warner",
         "base-devel",
         // Fonts
         "noto-fonts",
@@ -59,7 +90,6 @@ pub fn install_base_packages(kernel: String) {
         "sof-firmware",
         "alsa-ucm-conf",
         "wireplumber",
-        "crystal-first-setup",
         "power-profiles-daemon",
         "cups",
         "cups-pdf",
@@ -90,9 +120,7 @@ pub fn install_bootloader_efi(efidir: PathBuf) {
     install::install(vec![
         "grub",
         "efibootmgr",
-        "crystal-grub-theme",
         "os-prober",
-        "crystal-branding",
     ]);
     let efidir = std::path::Path::new("/mnt").join(efidir);
     let efi_str = efidir.to_str().unwrap();
@@ -105,7 +133,7 @@ pub fn install_bootloader_efi(efidir: PathBuf) {
             vec![
                 String::from("--target=x86_64-efi"),
                 format!("--efi-directory={}", efi_str),
-                String::from("--bootloader-id=crystal"),
+                String::from("--bootloader-id=blend"),
                 String::from("--removable"),
             ],
         ),
@@ -117,17 +145,10 @@ pub fn install_bootloader_efi(efidir: PathBuf) {
             vec![
                 String::from("--target=x86_64-efi"),
                 format!("--efi-directory={}", efi_str),
-                String::from("--bootloader-id=crystal"),
+                String::from("--bootloader-id=blend"),
             ],
         ),
         "install grub as efi without --removable",
-    );
-    files_eval(
-        append_file(
-            "/mnt/etc/default/grub",
-            "GRUB_THEME=\"/usr/share/grub/themes/crystal/theme.txt\"",
-        ),
-        "enable crystal grub theme",
     );
     exec_eval(
         exec_chroot(
@@ -141,9 +162,7 @@ pub fn install_bootloader_efi(efidir: PathBuf) {
 pub fn install_bootloader_legacy(device: PathBuf) {
     install::install(vec![
         "grub",
-        "crystal-grub-theme",
         "os-prober",
-        "crystal-branding",
     ]);
     if !device.exists() {
         crash(format!("The device {device:?} does not exist"), 1);
@@ -155,13 +174,6 @@ pub fn install_bootloader_legacy(device: PathBuf) {
             vec![String::from("--target=i386-pc"), device],
         ),
         "install grub as legacy",
-    );
-    files_eval(
-        append_file(
-            "/mnt/etc/default/grub",
-            "GRUB_THEME=\"/usr/share/grub/themes/crystal/theme.txt\"",
-        ),
-        "enable crystal grub theme",
     );
     exec_eval(
         exec_chroot(

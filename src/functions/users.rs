@@ -71,14 +71,6 @@ pub fn new_user(username: &str, hasroot: bool, password: &str, do_hash_pass: boo
             "Create /mnt/var/lib/AcountsService",
         );
         files::create_file(&format!("/mnt/var/lib/AccountsService/users/{}", username));
-        files_eval(
-            files::append_file(
-                &format!("/mnt/var/lib/AccountsService/users/{}", username),
-                r#"[User]
-                Session=onyx"#,
-            ),
-            format!("Populate AccountsService user file for {}", username).as_str(),
-        )
     }
 }
 

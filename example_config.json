@@ -37,7 +37,7 @@
         }
     ], 
     "rootpass": "3IwCDE/t39wuQ", // Same as other passwords, this has to be encrypted with `openssl passwd -crypt <password>`
-    "desktop": "onyx", // The desktop environment to install can be onyx, gnome, kde, mate, cinnamon, xfce, budgie, enlightenment, etc. for a full list check https://github.com/crystal-linux/jade/blob/main/src/internal/config.rs#L162
+    "desktop": "gnome", // The desktop environment to install can be gnome, kde, mate, cinnamon, xfce, budgie, enlightenment, etc. for a full list check https://github.com/blend-os/jade/blob/main/src/internal/config.rs#L162
     "timeshift": true, // Whether to enable timeshift as well as timeshift-autosnap, note that this may only work with root on btrfs
     "zramd": true, // Whether to enable zramd
     "extra_packages": [
@@ -47,9 +47,9 @@
         "tmux"
     ],
     "unakite": {
-        "enable": false, // Whether to install the recorvery partition, note that this currently is just a secondary smaller crystal installation
+        "enable": false, // Whether to install the recorvery partition, note that this currently is just a secondary smaller blendOS installation
         "root": "/dev/sda2", // The root partition for unakite
-        "oldroot": "/dev/sda3", // The root partition that the main crystal installation uses
+        "oldroot": "/dev/sda3", // The root partition that the main blendOS installation uses
         "efidir": "/boot/efi", // The esp mountpoint in unakite, note that this is only read when using it on an efi system
         "bootdev": "/dev/sda1" // the partition for the boot/efi partition
     },

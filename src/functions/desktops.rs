@@ -5,7 +5,6 @@ use crate::internal::*;
 pub fn install_desktop_setup(desktop_setup: DesktopSetup) {
     log::debug!("Installing {:?}", desktop_setup);
     match desktop_setup {
-        DesktopSetup::Onyx => install_onyx(),
         DesktopSetup::Gnome => install_gnome(),
         DesktopSetup::Kde => install_kde(),
         DesktopSetup::Budgie => install_budgie(),
@@ -22,6 +21,7 @@ pub fn install_desktop_setup(desktop_setup: DesktopSetup) {
         DesktopSetup::None => log::debug!("No desktop setup selected"),
     }
     install_networkmanager();
+    install_nearly();
 }
 
 fn install_networkmanager() {
@@ -34,6 +34,18 @@ fn install_networkmanager() {
         "Enable network manager",
     );
 }
+
+fn install_almost() {
+    install(vec!["nearly"]);
+    exec_eval(
+        exec_chroot(
+            "systemctl",
+            vec![String::from("enable"), String::from("nearly")],
+        ),
+        "Enable nearly",
+    );
+}
+
 
 fn install_bspwm() {
     install(vec![
@@ -267,16 +279,6 @@ fn install_gnome() {
     install(vec![
         "xorg",
         "gnome",
-        "sushi",
-        "gdm",
-    ]);
-    enable_dm("gdm");
-}
-
-fn install_onyx() {
-    install(vec![
-        "xorg",
-        "onyx",
         "sushi",
         "gdm",
     ]);
