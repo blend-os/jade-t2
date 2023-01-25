@@ -197,7 +197,7 @@ pub fn install_homemgr() {
 }
 
 pub fn install_flatpak() {
-    install(vec!["flatpak"]);
+    install(vec!["flatpak" "flathub-ui"]);
     exec_eval(
         exec_chroot(
             "flatpak",
