@@ -279,7 +279,7 @@ fn install_gnome() {
     install(vec![
         "xorg",
         "gnome",
-        "blendos-first-setup"
+        "blendos-first-setup",
         "sushi",
         "gdm",
     ]);
