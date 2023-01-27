@@ -7,16 +7,17 @@ use std::path::PathBuf;
 pub fn install_base_packages(kernel: String) {
     std::fs::create_dir_all("/mnt/etc").unwrap();
     let kernel_to_install = if kernel.is_empty() {
-        "linux"
+        "linux-t2"
     } else {
         match kernel.as_str() {
-            "linux" => "linux",
-            "linux-lts" => "linux-lts",
-            "linux-zen" => "linux-zen",
-            "linux-hardened" => "linux-hardened",
+            "linux" => "linux-t2",
+            "linux-t2" => "linux-t2",
+            "linux-xanmod-edge" => "linux-xanmod-edge-t2",
+            "linux-xanmod-edge-t2" => "linux-xanmod-edge-t2",
+            "linux-xanmod" => "linux-xanmod-edge-t2",
             _ => {
                 warn!("Unknown kernel: {}, using default instead", kernel);
-                "linux"
+                "linux-t2"
             }
         }
     };
@@ -82,6 +83,7 @@ pub fn install_base_packages(kernel: String) {
         "ttf-nerd-fonts-symbols-common",
         // Common packages for all desktops
         "xterm",
+        "apple-t2-audio-config",
         "pipewire",
         "pipewire-pulse",
         "pipewire-alsa",
